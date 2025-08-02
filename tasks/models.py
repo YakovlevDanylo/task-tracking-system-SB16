@@ -22,3 +22,6 @@ class Task(models.Model):
     priority = models.CharField(max_length=30, choices=PRIORITY_CHOICES, default="middle")
     end_time = models.DateField(null=True, blank=True)
     creator = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"[{self.title}] - [{self.creator.username}]"
