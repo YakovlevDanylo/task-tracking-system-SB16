@@ -9,4 +9,7 @@
     <a href="{% url 'task-update' task.pk %}" class="btn btn-warning">Update</a>
     <a href="{% url 'task-delete' task.pk %}" class="btn btn-danger">Delete</a>
 </div>
+
+{% include 'tasks/comments_container.html'%}
+
 {% endblock %}
