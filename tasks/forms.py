@@ -18,7 +18,11 @@ class CommentForm(forms.ModelForm):
 
     class Meta:
         model = Comment
-        fields = ["content"]
+        fields = ["content", "media"]
         widgets = {
-            "content": forms.Textarea(attrs={"class": "form-control", "placeholder": "Write your comment here..."})
+            "content": forms.Textarea(
+                attrs={"class": "form-control", "rows": 3, "placeholder": "Write your comment here..."}),
+            "media": forms.FileInput(
+                attrs={"class": "form-control"}
+            )
         }

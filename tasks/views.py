@@ -25,7 +25,7 @@ class TaskDetailView(DetailView):
         return content
 
     def post(self, request, *args, **kwargs):
-        comment_form = CommentForm(request.POST)
+        comment_form = CommentForm(request.POST, request.FILES)
 
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
@@ -54,7 +54,6 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
     form_class = TaskForm
     template_name = "tasks/task_form.html"
     success_url = reverse_lazy("task-list")
-    login_url = "/admin/login/"
 
     def form_valid(self, form):
         form.instance.creator = self.request.user
