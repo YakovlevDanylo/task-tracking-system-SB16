@@ -6,6 +6,9 @@ class TaskForm(forms.ModelForm):
         model = Task
         fields = ["title", "description", "status", "priority", "end_time"]
 
+        widgets = {
+            "end_time": forms.DateTimeInput(attrs={"type": "date", "class": "form-control"})
+        }
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field in self.fields:
